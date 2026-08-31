@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>С Днём Рождения!</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: linear-gradient(135deg, #1b0a2a 0%, #2d124d 50%, #150721 100%);
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      padding: 35px 25px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
+    }
+    .title {
+      font-family: 'Caveat', cursive;
+      font-size: 42px;
+      color: #fca5a5;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(252, 165, 165, 0.3);
+    }
+    .heart-icon {
+      font-size: 40px;
+      color: #fca5a5;
+      margin: 15px 0 25px;
+    }
+    .text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      margin-bottom: 25px;
+    }
+    .text strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .btn {
+      background-color: #fbcfe8;
+      color: #4c1d95;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+      box-shadow: 0 5px 15px rgba(251, 207, 232, 0.3);
+    }
+    .btn:active {
+      transform: scale(0.95);
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Страница 1 -->
+  <div class="card" id="page1">
+    <div class="subtitle">10 сентября · особенный день</div>
+    <div class="title">с днём рождения,<br>моя любимая</div>
+    <div class="heart-icon">♡</div>
+    <div class="text">
+      сегодня тебе исполняется 15, и я хочу подарить тебе не просто поздравление, а маленькое место, которое будет напоминать тебе о том, как сильно ты мне дорога
+    </div>
+    <button class="btn" onclick="nextPage()">нажми сюда ♡</button>
+  </div>
+
+  <!-- Страница 2 -->
+  <div class="card hidden" id="page2">
+    <div class="title" style="font-size: 36px; margin-bottom: 20px;">для моего солнышка</div>
+    <div class="text">
+      я хочу от всего сердца поздравить тебя с твоим днём рождения. желаю тебе огромного счастья, много улыбок, исполнения желаний и как можно больше прекрасных моментов<br><br>
+      за эти почти 6 месяцев ты стала для меня очень родным и особенным человеком. я очень ценю наши разговоры, наши моменты и просто то, что ты появилась в моей жизни<br><br>
+      <strong>спасибо что ты у меня есть, моя хорошая.</strong> ты моё солнышко, моё счастье и человек, которого я очень сильно люблю<br><br>
+      пусть твои 15 лет будут наполнены радостью, теплом и красивыми воспоминаниями. никогда не забывай, какая ты замечательная<br><br>
+      <strong>с днём рождения, моя любимая ♡</strong><br>
+      я очень сильно тебя люблю
+    </div>
+  </div>
+
+  <script>
+    if (window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.ready();
+      window.Telegram.WebApp.expand();
+    }
+
+    function nextPage() {
+      document.getElementById('page1').classList.add('hidden');
+      document.getElementById('page2').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
 
