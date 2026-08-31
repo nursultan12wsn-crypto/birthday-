@@ -21,9 +21,33 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
-      overflow-x: hidden;
+      overflow: hidden;
       position: relative;
     }
+
+    /* Анимация падающих сердечек */
+    .heart-fall {
+      position: absolute;
+      top: -10%;
+      color: rgba(252, 165, 165, 0.6);
+      font-size: 20px;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Карточка с анимацией появления */
     .card {
       background: rgba(255, 255, 255, 0.07);
       backdrop-filter: blur(12px);
@@ -36,12 +60,26 @@
       text-align: center;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       z-index: 2;
+      animation: fadeIn 0.8s ease-in-out forwards;
     }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
     .subtitle {
       font-size: 14px;
       color: rgba(255, 255, 255, 0.7);
       margin-bottom: 25px;
     }
+
     .title {
       font-family: 'Caveat', cursive;
       font-size: 42px;
@@ -50,21 +88,33 @@
       margin-bottom: 20px;
       text-shadow: 0 0 10px rgba(252, 165, 165, 0.3);
     }
+
+    /* Пульсация сердечка */
     .heart-icon {
       font-size: 40px;
       color: #fca5a5;
       margin: 15px 0 25px;
+      display: inline-block;
+      animation: pulse 1.5s infinite alternate;
     }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.2); }
+    }
+
     .text {
       font-size: 15px;
       line-height: 1.7;
       color: #e2e8f0;
       margin-bottom: 25px;
     }
+
     .text strong {
       color: #ffffff;
       font-weight: 700;
     }
+
     .btn {
       background-color: #fbcfe8;
       color: #4c1d95;
@@ -74,18 +124,28 @@
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: transform 0.2s, background-color 0.2s;
+      transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
       box-shadow: 0 5px 15px rgba(251, 207, 232, 0.3);
     }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(251, 207, 232, 0.5);
+    }
+
     .btn:active {
       transform: scale(0.95);
     }
+
     .hidden {
       display: none;
     }
   </style>
 </head>
 <body>
+
+  <!-- Фон с сердечками -->
+  <div id="hearts-container"></div>
 
   <!-- Страница 1 -->
   <div class="card" id="page1">
@@ -119,8 +179,24 @@
 
     function nextPage() {
       document.getElementById('page1').classList.add('hidden');
-      document.getElementById('page2').classList.remove('hidden');
+      const page2 = document.getElementById('page2');
+      page2.classList.remove('hidden');
       window.scrollTo(0, 0);
+    }
+
+    // Генерация падающих сердечек
+    const container = document.getElementById('hearts-container');
+    const heartSymbols = ['♡', '♥', '✨', '💖'];
+    
+    for (let i = 0; i < 25; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-fall');
+      heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      container.appendChild(heart);
     }
   </script>
 </body>
