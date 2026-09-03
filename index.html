@@ -3,160 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EVELINA ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Для моей любимой Эвелины ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Montserrat', sans-serif;
     }
 
     body {
-      background-color: #f4f5f8;
-      color: #1a1d24;
+      background: linear-gradient(135deg, #fff5f6 0%, #fde8ed 50%, #f3d5df 100%);
+      color: #2d232e;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 24px 16px;
+      padding: 20px 14px;
       -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 420px;
+      max-width: 440px;
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
     }
 
-    /* Main Card */
+    /* Card Box */
     .card {
-      background: #ffffff;
-      border: 1px solid #e2e5ed;
-      border-radius: 20px;
-      padding: 28px 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid #f8c8d4;
+      border-radius: 24px;
+      padding: 26px 20px;
+      box-shadow: 0 10px 30px rgba(212, 107, 134, 0.12);
     }
 
     .date-tag {
-      font-size: 11px;
+      display: inline-block;
+      background: #ffe3e9;
+      color: #d84a75;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #8c93a4;
-      margin-bottom: 12px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 800;
+      color: #4a1525;
+      margin-bottom: 10px;
       letter-spacing: -0.5px;
-      color: #0f1117;
-      margin-bottom: 12px;
     }
 
     .subtitle {
       font-size: 15px;
-      color: #525866;
+      color: #6e4855;
       line-height: 1.6;
-      font-weight: 400;
-    }
-
-    /* Section Label */
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #8c93a4;
-      margin-left: 4px;
-      margin-bottom: 8px;
+      font-weight: 500;
     }
 
     /* Action Button */
-    .btn-action {
+    .btn-main {
       width: 100%;
-      background: #0f1117;
+      background: linear-gradient(135deg, #e63956 0%, #c22543 100%);
       color: #ffffff;
       border: none;
-      padding: 16px;
-      border-radius: 14px;
-      font-size: 16px;
+      padding: 18px;
+      border-radius: 18px;
+      font-size: 18px;
       font-weight: 700;
       cursor: pointer;
-      text-align: center;
-      transition: opacity 0.2s ease;
+      box-shadow: 0 8px 20px rgba(230, 57, 86, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-    }
-
-    .btn-action:active {
-      opacity: 0.85;
-    }
-
-    /* Expandable Message Content */
-    .note-content {
-      display: none;
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #e2e5ed;
-      font-size: 15px;
-      color: #3a3f4d;
-      line-height: 1.7;
-    }
-
-    .note-content p {
-      margin-bottom: 14px;
-    }
-
-    .final-love {
-      margin-top: 24px;
-      padding-top: 20px;
-      border-top: 1px dashed #d1d5e0;
-      font-size: 17px;
-      font-weight: 800;
-      color: #0f1117;
-      text-align: center;
-      line-height: 1.4;
-    }
-
-    /* Cards Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
 
-    .grid-item {
-      background: #ffffff;
-      border: 1px solid #e2e5ed;
-      border-radius: 14px;
-      padding: 16px 12px;
+    .btn-main:active {
+      transform: scale(0.98);
+    }
+
+    /* Expandable Long Letter */
+    .letter-box {
+      display: none;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px dashed #f5b0c2;
+    }
+
+    .letter-title {
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      color: #c22543;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .letter-text p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #4a2835;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .final-love-block {
+      margin-top: 28px;
+      padding: 20px 14px;
+      background: #fff0f3;
+      border-radius: 18px;
+      border: 2px solid #f5b0c2;
+      text-align: center;
+    }
+
+    .final-love-text {
+      font-size: 20px;
+      font-weight: 800;
+      color: #b81d3e;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Grid Section */
+    .section-title {
       font-size: 13px;
-      font-weight: 600;
-      color: #2b2f38;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #8a5768;
+      margin-left: 6px;
+      margin-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .grid-card {
+      background: #ffffff;
+      border: 1.5px solid #f8c8d4;
+      border-radius: 16px;
+      padding: 16px 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #5c2b3c;
       text-align: center;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(212, 107, 134, 0.08);
       transition: all 0.2s ease;
     }
 
-    .grid-item.activated {
-      background: #0f1117;
+    .grid-card.active {
+      background: #c22543;
       color: #ffffff;
-      border-color: #0f1117;
+      border-color: #c22543;
     }
 
     footer {
       text-align: center;
-      font-size: 10px;
-      font-weight: 600;
-      color: #a0a7b8;
-      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #a37584;
+      margin-top: 10px;
       letter-spacing: 2px;
     }
   </style>
@@ -165,56 +185,71 @@
 
   <div class="container">
     
-    <!-- Main Header Card -->
+    <!-- Header Card -->
     <div class="card">
-      <div class="date-tag">09.09 • SPECIAL ❤️</div>
-      <h1>Эвелина</h1>
-      <p class="subtitle">С днём рождения, моя самая любимая и хорошая. Этот день полностью твой ✨</p>
+      <div class="date-tag">09.09 • ОСОБЕННЫЙ ДЕНЬ ❤️</div>
+      <h1>Эвелина ❤️</h1>
+      <p class="subtitle">С днём рождения, моя самая любимая, родная и невероятная девочка! Этот день полностью создан для тебя ✨</p>
     </div>
 
-    <!-- Personal Message Accordion -->
+    <!-- Main Interactive Letter -->
     <div class="card">
-      <button class="btn-action" onclick="toggleNote()">
+      <button class="btn-main" onclick="openLetter()">
         Нажми сюда ❤️
       </button>
       
-      <div id="note" class="note-content">
-        <p>Моя дорогая и самая невероятная Эвелина! 🌸</p>
-        <p>Поздравляю тебя с днём рождения! Ты даже не представляешь, насколько ты особенный и дорогой для меня человек. Твоя улыбка, твой голос, твоя забота и твой невероятный взгляд — это то, что делает мои дни намного теплее и счастливее 💖</p>
-        <p>Я хочу пожелать тебе, чтобы ты всегда улыбалась, никогда ни о чём не переживала и знала, что у тебя обязательно всё получится. Оставайся всегда такой же милой, красивой, умной и настоящей ✨</p>
-        <p>Спасибо тебе за то, что ты есть у меня. Ты делаешь этот мир лучше просто тем, что находишься в нём 🌹</p>
+      <div id="letter" class="letter-box">
+        <div class="letter-title">Моей любимой Эвелине... 🌸</div>
         
-        <div class="final-love">
-          Я ТЕБЯ ОЧЕНЬ СИЛЬНО ЛЮБЛЮ ЭВЕЛИНА ❤️
+        <div class="letter-text">
+          <p>Моя дорогая, самая милая и прекрасная Эвелина! ❤️ Поздравляю тебя с твоим днём рождения! Я так рад, что ты есть в моей жизни, и хочу, чтобы сегодня ты чувствовала себя самой счастливой на всём свете.</p>
+          
+          <p>Ты даже не представляешь, насколько ты особенный и глубокий человек. В тебе есть всё: невероятная красота, ум, особенный стиль, доброта и та самая невероятная атмосфера, которую ты создаёшь вокруг себя просто своим присутствием. Когда ты рядом, всё вокруг становится теплее, уютнее и лучше 💖</p>
+          
+          <p>Я хочу пожелать тебе, чтобы каждый твой день был наполнен искренними улыбками, хорошими новостями и исполнением всех самых заветных желаний. Чтобы ты никогда не сомневалась в себе, уверенно шла к своим целям и знала, что у тебя обязательно всё получится! 🌹</p>
+          
+          <p>Пусть в твоей жизни будет как можно больше радостных моментов, путешествий, уюта и душевного спокойствия. Оставайся всегда такой же настоящей, яркой и неповторимой ✨</p>
+          
+          <p>Спасибо тебе за твои тёплые глаза, за твои слова, за твою заботу и за то, какая ты замечательная. Ты делаешь мой мир лучше каждый день!</p>
+        </div>
+        
+        <div class="final-love-block">
+          <div class="final-love-text">
+            Я ТЕБЯ ОЧЕНЬ СИЛЬНО ЛЮБЛЮ ЭВЕЛИНА ❤️
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Interactive Cards -->
+    <!-- Cards Section -->
     <div>
-      <div class="section-label">Твои карточки 🤍</div>
+      <div class="section-title">Карточки для тебя 🤍</div>
       <div class="grid">
-        <div class="grid-item" onclick="activateCard(this)">🎬 Просмотр фильма</div>
-        <div class="grid-item" onclick="activateCard(this)">🥂 Совместный вечер</div>
-        <div class="grid-item" onclick="activateCard(this)">✨ Любое желание</div>
-        <div class="grid-item" onclick="activateCard(this)">💬 Честный разговор</div>
+        <div class="grid-item grid-card" onclick="clickCard(this)">🎬 Просмотр фильма</div>
+        <div class="grid-item grid-card" onclick="clickCard(this)">🥂 Романтический вечер</div>
+        <div class="grid-item grid-card" onclick="clickCard(this)">✨ Исполнение желания</div>
+        <div class="grid-item grid-card" onclick="clickCard(this)">💬 Душевный разговор</div>
       </div>
     </div>
 
-    <footer>DESIGNED FOR EVELINA</footer>
+    <footer>DESIGNED WITH LOVE FOR EVELINA</footer>
 
   </div>
 
   <script>
-    function toggleNote() {
-      const note = document.getElementById('note');
-      note.style.display = (note.style.display === 'block') ? 'none' : 'block';
+    function openLetter() {
+      const letter = document.getElementById('letter');
+      if (letter.style.display === 'block') {
+        letter.style.display = 'none';
+      } else {
+        letter.style.display = 'block';
+      }
     }
 
-    function activateCard(element) {
-      if (!element.classList.contains('activated')) {
-        element.classList.add('activated');
-        element.innerText = 'Принято ✓';
+    function clickCard(el) {
+      if (!el.classList.contains('active')) {
+        el.classList.add('active');
+        el.innerText = 'Принято ✓';
       }
     }
   </script>
