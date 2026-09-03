@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EVELINA ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -20,12 +20,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 32px 16px;
+      padding: 24px 16px;
       -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 400px;
+      max-width: 420px;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -43,7 +43,7 @@
 
     .date-tag {
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #8c93a4;
@@ -52,14 +52,14 @@
 
     h1 {
       font-size: 28px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: -0.5px;
       color: #0f1117;
       margin-bottom: 12px;
     }
 
     .subtitle {
-      font-size: 14px;
+      font-size: 15px;
       color: #525866;
       line-height: 1.6;
       font-weight: 400;
@@ -84,8 +84,8 @@
       border: none;
       padding: 16px;
       border-radius: 14px;
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 700;
       cursor: pointer;
       text-align: center;
       transition: opacity 0.2s ease;
@@ -102,23 +102,27 @@
     /* Expandable Message Content */
     .note-content {
       display: none;
-      margin-top: 16px;
-      padding-top: 16px;
+      margin-top: 20px;
+      padding-top: 20px;
       border-top: 1px solid #e2e5ed;
-      font-size: 14px;
-      color: #525866;
-      line-height: 1.6;
+      font-size: 15px;
+      color: #3a3f4d;
+      line-height: 1.7;
+    }
+
+    .note-content p {
+      margin-bottom: 14px;
     }
 
     .final-love {
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px dashed #e2e5ed;
-      font-size: 15px;
-      font-weight: 700;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px dashed #d1d5e0;
+      font-size: 17px;
+      font-weight: 800;
       color: #0f1117;
       text-align: center;
-      letter-spacing: -0.2px;
+      line-height: 1.4;
     }
 
     /* Cards Grid */
@@ -165,7 +169,7 @@
     <div class="card">
       <div class="date-tag">09.09 • SPECIAL ❤️</div>
       <h1>Эвелина</h1>
-      <p class="subtitle">С днём рождения. Пусть этот год принесёт только то, что действительно имеет значение, вдохновляет и даёт энергию двигаться вперёд.</p>
+      <p class="subtitle">С днём рождения, моя самая любимая и хорошая. Этот день полностью твой ✨</p>
     </div>
 
     <!-- Personal Message Accordion -->
@@ -175,21 +179,24 @@
       </button>
       
       <div id="note" class="note-content">
-        <p>Ты обладаешь редким чутьём на стиль и особенной атмосферой. Оставайся такой же цельной, уверенной в себе и настоящей. Пусть всё задуманное исполняется легко и именно так, как ты этого хочешь ✨</p>
+        <p>Моя дорогая и самая невероятная Эвелина! 🌸</p>
+        <p>Поздравляю тебя с днём рождения! Ты даже не представляешь, насколько ты особенный и дорогой для меня человек. Твоя улыбка, твой голос, твоя забота и твой невероятный взгляд — это то, что делает мои дни намного теплее и счастливее 💖</p>
+        <p>Я хочу пожелать тебе, чтобы ты всегда улыбалась, никогда ни о чём не переживала и знала, что у тебя обязательно всё получится. Оставайся всегда такой же милой, красивой, умной и настоящей ✨</p>
+        <p>Спасибо тебе за то, что ты есть у меня. Ты делаешь этот мир лучше просто тем, что находишься в нём 🌹</p>
         
         <div class="final-love">
-          Я тебя очень сильно люблю Эвелина ❤️
+          Я ТЕБЯ ОЧЕНЬ СИЛЬНО ЛЮБЛЮ ЭВЕЛИНА ❤️
         </div>
       </div>
     </div>
 
     <!-- Interactive Cards -->
     <div>
-      <div class="section-label">Доступные карты 🤍</div>
+      <div class="section-label">Твои карточки 🤍</div>
       <div class="grid">
         <div class="grid-item" onclick="activateCard(this)">🎬 Просмотр фильма</div>
         <div class="grid-item" onclick="activateCard(this)">🥂 Совместный вечер</div>
-        <div class="grid-item" onclick="activateCard(this)">🎁 Персональный выбор</div>
+        <div class="grid-item" onclick="activateCard(this)">✨ Любое желание</div>
         <div class="grid-item" onclick="activateCard(this)">💬 Честный разговор</div>
       </div>
     </div>
