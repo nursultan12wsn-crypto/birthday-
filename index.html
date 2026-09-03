@@ -260,6 +260,166 @@
       heart.style.color = Math.random() > 0.4 ? 'rgba(244, 114, 182, 0.85)' : 'rgba(251, 207, 232, 0.7)';
       container.appendChild(heart);
     }
+    <style>
+  .extra-section {
+    text-align: center;
+    padding: 30px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    margin: 30px auto;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    font-family: sans-serif;
+  }
+
+  .btn-custom {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin: 8px 4px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .btn-custom:active {
+    transform: scale(0.95);
+  }
+
+  .reason-box {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    min-height: 40px;
+    color: #fff;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background: #fff;
+    color: #333;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  .coupons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .coupon-card {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px dashed #fff;
+    padding: 10px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .floating-heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: floatUp 2s ease-out forwards;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+  }
+</style>
+
+<div class="extra-section">
+  <h3>✨ Почему ты особенная?</h3>
+  <button class="btn-custom" onclick="getReason()">Узнать причину 💖</button>
+  <div id="reasonText" class="reason-box">Нажми на кнопку выше!</div>
+
+  <hr style="border: 0.5px solid rgba(255,255,255,0.2); margin: 20px 0;">
+
+  <button class="btn-custom" onclick="sendHug()">Виртуальная обнимашка 🫂</button>
+  <button class="btn-custom" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);" onclick="openSupport()">Нажми, если грустно 🥺</button>
+
+  <hr style="border: 0.5px solid rgba(255,255,255,0.2); margin: 20px 0;">
+
+  <h3>🎟️ Твои купоны</h3>
+  <div class="coupons-grid">
+    <div class="coupon-card" onclick="useCoupon(this, 'Фильм на твой выбор')">🎬 Фильм на твой выбор</div>
+    <div class="coupon-card" onclick="useCoupon(this, 'Вкусняшка от меня')">🍕 Вкусняшка от меня</div>
+    <div class="coupon-card" onclick="useCoupon(this, '100% честный ответ')">🤫 100% честный ответ</div>
+    <div class="coupon-card" onclick="useCoupon(this, 'Исполнение любого желания')">✨ Любое желание</div>
+  </div>
+</div>
+
+<div id="supportModal" class="modal">
+  <div class="modal-content">
+    <h3>Эви, родная! ❤️</h3>
+    <p>Если тебе сейчас тяжело, просто помни: ты не одна. Я всегда рядом, поддержу тебя и никуда не уйду. Подыши глубоко и напиши мне в ТГ!</p>
+    <button class="btn-custom" onclick="closeSupport()">Закрыть</button>
+  </div>
+</div>
+
+<script>
+  const reasons = [
+    "За твою невероятную и тёплую улыбку ♡",
+    "За то, как с тобой уютно и легко общаться",
+    "За твоё невероятное чувство юмора",
+    "За то, что ты делаешь мои дни намного ярче",
+    "За твои милые сообщения и заботу",
+    "За то, что ты — это ты, самая уникальная!"
+  ];
+
+  function getReason() {
+    const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
+    document.getElementById('reasonText').innerText = randomReason;
+  }
+
+  function sendHug() {
+    for(let i = 0; i < 15; i++) {
+      setTimeout(() => {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerText = ['💖', '🧸', '✨', '🌸'][Math.floor(Math.random()*4)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 2000);
+      }, i * 100);
+    }
+  }
+
+  function openSupport() {
+    document.getElementById('supportModal').style.display = 'flex';
+  }
+
+  function closeSupport() {
+    document.getElementById('supportModal').style.display = 'none';
+  }
+
+  function useCoupon(element, text) {
+    element.style.background = '#4CAF50';
+    element.style.borderColor = '#4CAF50';
+    element.innerText = 'Активировано! ✅';
+    alert('Ты активировала купон: "' + text + '"! Заскринь и отправь мне в ЛС ;)');
+  }
   </script>
 </body>
 </html>
