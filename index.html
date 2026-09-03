@@ -5,422 +5,215 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>С Днём Рождения, Эвелина!</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: linear-gradient(135deg, #180828 0%, #321354 50%, #170524 100%);
+      background: linear-gradient(135deg, #1a1c29, #08090d);
       color: #ffffff;
       font-family: 'Montserrat', sans-serif;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       padding: 20px;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Фон с падающими сердечками */
-    #hearts-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    .heart-fall {
-      position: absolute;
-      top: -10%;
-      user-select: none;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg) scale(0.8);
-        opacity: 0.9;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg) scale(1.2);
-        opacity: 0;
-      }
-    }
-
-    /* Карточка с размытием */
-    .card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 28px;
-      padding: 35px 25px;
-      max-width: 440px;
-      width: 100%;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-      z-index: 2;
-      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      overflow-x: hidden;
     }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.92) translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 30px 20px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
-
-    .subtitle {
-      font-size: 14px;
-      letter-spacing: 1px;
-      color: #f472b6;
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .title {
-      font-family: 'Caveat', cursive;
-      font-size: 44px;
-      color: #fbcfe8;
-      line-height: 1.2;
-      margin-bottom: 15px;
-      text-shadow: 0 0 20px rgba(251, 207, 232, 0.6);
-    }
-
-    .heart-icon {
-      font-size: 50px;
-      color: #f472b6;
-      margin: 10px 0 20px;
-      display: inline-block;
-      animation: pulse 1.2s infinite alternate ease-in-out;
-      filter: drop-shadow(0 0 12px rgba(244, 114, 182, 0.8));
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.35); }
-    }
-
-    .text {
-      font-size: 15px;
-      line-height: 1.7;
-      color: #f1f5f9;
-      margin-bottom: 25px;
-      font-weight: 400;
-    }
-
-    .text strong {
-      color: #ffffff;
-      font-weight: 700;
-    }
-
-    /* Кнопка с анимацией */
-    .btn {
-      background: linear-gradient(135deg, #fbcfe8 0%, #f472b6 100%);
-      color: #31103f;
+    h1 { font-size: 26px; margin-bottom: 10px; color: #ff758c; }
+    p { font-size: 15px; color: #d1d5db; line-height: 1.5; margin-bottom: 20px; }
+    .click-btn {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
       border: none;
-      padding: 15px 32px;
+      padding: 14px 28px;
       border-radius: 30px;
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(244, 114, 182, 0.4);
-      animation: bounce 2.2s infinite;
-      transition: transform 0.2s;
+      box-shadow: 0 10px 20px rgba(255, 117, 140, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-7px); }
-      60% { transform: translateY(-3px); }
-    }
-
-    .btn:active {
-      transform: scale(0.95);
-    }
-
-    /* Большое финальное сердце с именем */
-    .big-heart-container {
-      margin: 25px 0 15px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .big-heart {
-      font-size: 110px;
-      color: #f472b6;
-      line-height: 1;
-      animation: bigPulse 1.5s infinite alternate ease-in-out;
-      filter: drop-shadow(0 0 25px rgba(244, 114, 182, 0.9));
-      display: block;
-    }
-
-    @keyframes bigPulse {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.15); }
-    }
-
-    .name-inside {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -55%);
-      font-family: 'Caveat', cursive;
-      font-size: 32px;
-      font-weight: 700;
-      color: #ffffff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 0 10px rgba(255,255,255,0.8);
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    .hidden {
+    .click-btn:active { transform: scale(0.95); }
+    .secret-message {
       display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255, 117, 140, 0.15);
+      border-radius: 16px;
+      border: 1px dashed #ff758c;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Дополнительные интерактивные стили */
+    .extra-section {
+      text-align: center;
+      padding: 20px 10px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      margin-top: 25px;
+      width: 100%;
+    }
+    .btn-custom {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      margin: 6px 3px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .reason-box { margin-top: 10px; font-size: 14px; color: #ffe6ea; min-height: 35px; }
+    .coupons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .coupon-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px dashed #ff758c;
+      padding: 10px 5px;
+      border-radius: 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #1a1c29;
+      color: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 300px;
+      text-align: center;
+      border: 1px solid #ff758c;
+    }
+    .floating-heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 2s ease-out forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Фон с огромным количеством сердечек -->
-  <div id="hearts-container"></div>
-
-  <!-- Страница 1 -->
-  <div class="card" id="page1">
-    <div class="subtitle">10 сентября · особенный день</div>
-    <div class="title">С Днём Рождения,<br>моя любимая</div>
-    <div class="heart-icon">♡</div>
-    <div class="text">
-      Сегодня тебе исполняется 15, и я хочу подарить тебе не просто поздравление, а маленькое место, которое будет напоминать тебе о том, как сильно ты мне дорога.
+  <div class="card">
+    <h1>Эвелина, с днём рождения! 🎉</h1>
+    <p>Пусть этот день будет наполнен улыбками, теплом и самыми лучшими моментами. Ты невероятный человек!</p>
+    
+    <button class="click-btn" onclick="toggleSecret()">Нажми сюда ✨</button>
+    
+    <div id="secret" class="secret-message">
+      <p>❤️ Помни, что ты особенная, и пусть все твои мечты обязательно сбудутся!</p>
     </div>
-    <button class="btn" onclick="nextPage()">Нажми сюда ♡</button>
+
+    <!-- Интерактивный блок -->
+    <div class="extra-section">
+      <h3>✨ Почему ты особенная?</h3>
+      <button class="btn-custom" onclick="getReason()">Узнать причину 💖</button>
+      <div id="reasonText" class="reason-box">Нажми на кнопку выше!</div>
+
+      <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 15px 0;">
+
+      <button class="btn-custom" onclick="sendHug()">Обнимашка 🫂</button>
+      <button class="btn-custom" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);" onclick="openSupport()">Если грустно 🥺</button>
+
+      <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 15px 0;">
+
+      <h3>🎟️ Твои купоны</h3>
+      <div class="coupons-grid">
+        <div class="coupon-card" onclick="useCoupon(this, 'Фильм на твой выбор')">🎬 Фильм на твой выбор</div>
+        <div class="coupon-card" onclick="useCoupon(this, 'Вкусняшка от меня')">🍕 Вкусняшка от меня</div>
+        <div class="coupon-card" onclick="useCoupon(this, '100% честный ответ')">🤫 Честный ответ</div>
+        <div class="coupon-card" onclick="useCoupon(this, 'Любое желание')">✨ Любое желание</div>
+      </div>
+    </div>
   </div>
 
-  <!-- Страница 2 -->
-  <div class="card hidden" id="page2">
-    <div class="title" style="font-size: 38px; margin-bottom: 15px;">Для моего солнышка</div>
-    <div class="text">
-      Я хочу от всего сердца поздравить тебя с твоим днём рождения. Желаю тебе огромного счастья, много улыбок, исполнения желаний и как можно больше прекрасных моментов!<br><br>
-      За эти почти 6 месяцев ты стала для меня очень родным и особенным человеком. Я очень ценю наши разговоры, наши моменты и просто то, что ты появилась в моей жизни.<br><br>
-      <strong>Спасибо, что ты у меня есть, моя хорошая.</strong> Ты моё солнышко, моё счастье и человек, которого я очень сильно люблю ♡<br><br>
-      Пусть твои 15 лет будут наполнены радостью, теплом и красивыми воспоминаниями. Никогда не забывай, какая ты замечательная!
-    </div>
-
-    <!-- Финальное сердце с именем Эвелина -->
-    <div class="big-heart-container">
-      <span class="big-heart">♥</span>
-      <span class="name-inside">Эвелина</span>
-    </div>
-
-    <div class="text" style="margin-bottom: 0;">
-      <strong>Я очень сильно тебя люблю! ♡</strong>
+  <div id="supportModal" class="modal">
+    <div class="modal-content">
+      <h3 style="color: #ff758c; margin-bottom: 10px;">Эви, родная! ❤️</h3>
+      <p style="font-size: 13px; color: #ddd;">Если тебе сейчас тяжело, просто помни: ты не одна. Я всегда рядом и поддержу тебя. Напиши мне в ТГ!</p>
+      <button class="btn-custom" onclick="closeSupport()">Закрыть</button>
     </div>
   </div>
 
   <script>
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.ready();
-      window.Telegram.WebApp.expand();
+    function toggleSecret() {
+      const secret = document.getElementById('secret');
+      if (secret.style.display === 'block') {
+        secret.style.display = 'none';
+      } else {
+        secret.style.display = 'block';
+      }
     }
 
-    function nextPage() {
-      document.getElementById('page1').classList.add('hidden');
-      const page2 = document.getElementById('page2');
-      page2.classList.remove('hidden');
-      window.scrollTo(0, 0);
+    const reasons = [
+      "За твою невероятную и тёплую улыбку ♡",
+      "За то, как с тобой уютно и легко общаться",
+      "За твоё невероятное чувство юмора",
+      "За то, что ты делаешь мои дни намного ярче",
+      "За твои милые сообщения и заботу",
+      "За то, что ты — это ты, самая уникальная!"
+    ];
+
+    function getReason() {
+      const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
+      document.getElementById('reasonText').innerText = randomReason;
     }
 
-    // Генерация МНОЖЕСТВА падающих сердечек и искорок (80 элементов)
-    const container = document.getElementById('hearts-container');
-    const heartSymbols = ['♡', '♥', '✨', '💖', '💕', '🌸', '💗'];
-    
-    for (let i = 0; i < 80; i++) {
-      const heart = document.createElement('div');
-      heart.classList.add('heart-fall');
-      heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 4 + 2.5) + 's';
-      heart.style.animationDelay = Math.random() * 6 + 's';
-      heart.style.fontSize = (Math.random() * 20 + 12) + 'px';
-      heart.style.color = Math.random() > 0.4 ? 'rgba(244, 114, 182, 0.85)' : 'rgba(251, 207, 232, 0.7)';
-      container.appendChild(heart);
+    function sendHug() {
+      for(let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.className = 'floating-heart';
+          heart.innerText = ['💖', '🧸', '✨', '🌸'][Math.floor(Math.random()*4)];
+          heart.style.left = Math.random() * 100 + 'vw';
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 2000);
+        }, i * 100);
+      }
     }
-    <style>
-  .extra-section {
-    text-align: center;
-    padding: 30px 15px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border-radius: 20px;
-    margin: 30px auto;
-    max-width: 500px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    font-family: sans-serif;
-  }
 
-  .btn-custom {
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    margin: 8px 4px;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-
-  .btn-custom:active {
-    transform: scale(0.95);
-  }
-
-  .reason-box {
-    margin-top: 15px;
-    font-size: 16px;
-    font-weight: 500;
-    min-height: 40px;
-    color: #fff;
-  }
-
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-
-  .modal-content {
-    background: #fff;
-    color: #333;
-    padding: 25px;
-    border-radius: 20px;
-    max-width: 320px;
-    text-align: center;
-  }
-
-  .coupons-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 15px;
-  }
-
-  .coupon-card {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px dashed #fff;
-    padding: 10px;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 12px;
-    cursor: pointer;
-  }
-
-  .floating-heart {
-    position: fixed;
-    bottom: -20px;
-    font-size: 24px;
-    animation: floatUp 2s ease-out forwards;
-    pointer-events: none;
-    z-index: 999;
-  }
-
-  @keyframes floatUp {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
-  }
-</style>
-
-<div class="extra-section">
-  <h3>✨ Почему ты особенная?</h3>
-  <button class="btn-custom" onclick="getReason()">Узнать причину 💖</button>
-  <div id="reasonText" class="reason-box">Нажми на кнопку выше!</div>
-
-  <hr style="border: 0.5px solid rgba(255,255,255,0.2); margin: 20px 0;">
-
-  <button class="btn-custom" onclick="sendHug()">Виртуальная обнимашка 🫂</button>
-  <button class="btn-custom" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);" onclick="openSupport()">Нажми, если грустно 🥺</button>
-
-  <hr style="border: 0.5px solid rgba(255,255,255,0.2); margin: 20px 0;">
-
-  <h3>🎟️ Твои купоны</h3>
-  <div class="coupons-grid">
-    <div class="coupon-card" onclick="useCoupon(this, 'Фильм на твой выбор')">🎬 Фильм на твой выбор</div>
-    <div class="coupon-card" onclick="useCoupon(this, 'Вкусняшка от меня')">🍕 Вкусняшка от меня</div>
-    <div class="coupon-card" onclick="useCoupon(this, '100% честный ответ')">🤫 100% честный ответ</div>
-    <div class="coupon-card" onclick="useCoupon(this, 'Исполнение любого желания')">✨ Любое желание</div>
-  </div>
-</div>
-
-<div id="supportModal" class="modal">
-  <div class="modal-content">
-    <h3>Эви, родная! ❤️</h3>
-    <p>Если тебе сейчас тяжело, просто помни: ты не одна. Я всегда рядом, поддержу тебя и никуда не уйду. Подыши глубоко и напиши мне в ТГ!</p>
-    <button class="btn-custom" onclick="closeSupport()">Закрыть</button>
-  </div>
-</div>
-
-<script>
-  const reasons = [
-    "За твою невероятную и тёплую улыбку ♡",
-    "За то, как с тобой уютно и легко общаться",
-    "За твоё невероятное чувство юмора",
-    "За то, что ты делаешь мои дни намного ярче",
-    "За твои милые сообщения и заботу",
-    "За то, что ты — это ты, самая уникальная!"
-  ];
-
-  function getReason() {
-    const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
-    document.getElementById('reasonText').innerText = randomReason;
-  }
-
-  function sendHug() {
-    for(let i = 0; i < 15; i++) {
-      setTimeout(() => {
-        const heart = document.createElement('div');
-        heart.className = 'floating-heart';
-        heart.innerText = ['💖', '🧸', '✨', '🌸'][Math.floor(Math.random()*4)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 2000);
-      }, i * 100);
+    function openSupport() {
+      document.getElementById('supportModal').style.display = 'flex';
     }
-  }
 
-  function openSupport() {
-    document.getElementById('supportModal').style.display = 'flex';
-  }
+    function closeSupport() {
+      document.getElementById('supportModal').style.display = 'none';
+    }
 
-  function closeSupport() {
-    document.getElementById('supportModal').style.display = 'none';
-  }
-
-  function useCoupon(element, text) {
-    element.style.background = '#4CAF50';
-    element.style.borderColor = '#4CAF50';
-    element.innerText = 'Активировано! ✅';
-    alert('Ты активировала купон: "' + text + '"! Заскринь и отправь мне в ЛС ;)');
-  }
+    function useCoupon(element, text) {
+      element.style.background = '#4CAF50';
+      element.style.borderColor = '#4CAF50';
+      element.innerText = 'Активировано! ✅';
+      alert('Ты активировала купон: "' + text + '"! Заскринь и отправь мне в ЛС ;)');
+    }
   </script>
 </body>
 </html>
-
