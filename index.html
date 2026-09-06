@@ -4,180 +4,220 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Для моей любимой Эвелины ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #fff5f6 0%, #fde8ed 50%, #f3d5df 100%);
-      color: #2d232e;
+      background: linear-gradient(180deg, #ffeef2 0%, #ffd6e0 100%);
       min-height: 100vh;
+      padding: 20px 15px 40px 15px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      padding: 20px 14px;
-      -webkit-font-smoothing: antialiased;
+      color: #2b2b2b;
     }
 
     .container {
-      max-width: 440px;
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+      max-width: 420px;
     }
 
-    /* Card Box */
-    .card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border: 1.5px solid #f8c8d4;
-      border-radius: 24px;
-      padding: 26px 20px;
-      box-shadow: 0 10px 30px rgba(212, 107, 134, 0.12);
+    /* Верхняя главная карточка */
+    .header-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(230, 57, 70, 0.08);
+      margin-bottom: 15px;
     }
 
-    .date-tag {
+    .badge {
       display: inline-block;
-      background: #ffe3e9;
-      color: #d84a75;
+      background: #ffe3e8;
+      color: #d63384;
       font-size: 12px;
       font-weight: 700;
       padding: 6px 14px;
       border-radius: 20px;
-      letter-spacing: 1px;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
     }
 
-    h1 {
-      font-size: 30px;
+    .title {
+      font-size: 32px;
       font-weight: 800;
-      color: #4a1525;
-      margin-bottom: 10px;
-      letter-spacing: -0.5px;
-    }
-
-    .subtitle {
-      font-size: 15px;
-      color: #6e4855;
-      line-height: 1.6;
-      font-weight: 500;
-    }
-
-    /* Action Button */
-    .btn-main {
-      width: 100%;
-      background: linear-gradient(135deg, #e63956 0%, #c22543 100%);
-      color: #ffffff;
-      border: none;
-      padding: 18px;
-      border-radius: 18px;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(230, 57, 86, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: #1a1a1a;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #555555;
+    }
+
+    /* Главная кнопка */
+    .btn-main {
+      width: 100%;
+      background: linear-gradient(135deg, #e63946 0%, #d62839 100%);
+      color: white;
+      border: none;
+      border-radius: 22px;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+      margin-bottom: 15px;
+      transition: transform 0.2s;
     }
 
     .btn-main:active {
       transform: scale(0.98);
     }
 
-    /* Expandable Long Letter */
-    .letter-box {
+    /* Скрытое письмо */
+    .letter-card {
       display: none;
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 2px dashed #f5b0c2;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 25px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(230, 57, 70, 0.08);
+      animation: fadeIn 0.4s ease-out;
     }
 
     .letter-title {
-      font-family: 'Caveat', cursive;
-      font-size: 28px;
-      color: #c22543;
-      margin-bottom: 14px;
-      text-align: center;
-    }
-
-    .letter-text p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: #4a2835;
-      margin-bottom: 16px;
-      font-weight: 500;
-    }
-
-    .final-love-block {
-      margin-top: 28px;
-      padding: 20px 14px;
-      background: #fff0f3;
-      border-radius: 18px;
-      border: 2px solid #f5b0c2;
-      text-align: center;
-    }
-
-    .final-love-text {
+      font-family: Georgia, serif;
+      font-style: italic;
       font-size: 20px;
+      color: #b5179e;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .letter-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #444444;
+      margin-bottom: 15px;
+    }
+
+    .love-banner {
+      background: #ffe3e8;
+      border-radius: 18px;
+      padding: 18px 10px;
+      text-align: center;
+      color: #b5179e;
       font-weight: 800;
-      color: #b81d3e;
-      line-height: 1.4;
-      text-transform: uppercase;
+      font-size: 16px;
+      margin-top: 20px;
       letter-spacing: 0.5px;
     }
 
-    /* Grid Section */
-    .section-title {
-      font-size: 13px;
+    /* Блок с генератором милых фраз */
+    .interactive-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      margin-bottom: 20px;
+    }
+
+    .interactive-title {
+      font-size: 16px;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      color: #d63384;
+      margin-bottom: 6px;
+    }
+
+    .interactive-sub {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 12px;
+    }
+
+    .message-box {
+      min-height: 65px;
+      background: #fff0f3;
+      border-radius: 16px;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #b5179e;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .btn-cute {
+      background: #e63946;
+      color: white;
+      border: none;
+      border-radius: 18px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Сетка карточек */
+    .section-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #888888;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      color: #8a5768;
-      margin-left: 6px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      text-align: center;
     }
 
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
+      margin-bottom: 25px;
     }
 
     .grid-card {
       background: #ffffff;
-      border: 1.5px solid #f8c8d4;
-      border-radius: 16px;
-      padding: 16px 12px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #5c2b3c;
+      border-radius: 18px;
+      padding: 15px 10px;
       text-align: center;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(212, 107, 134, 0.08);
-      transition: all 0.2s ease;
+      font-size: 13px;
+      font-weight: 700;
+      color: #333333;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
 
-    .grid-card.active {
-      background: #c22543;
-      color: #ffffff;
-      border-color: #c22543;
+    .footer {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #a0a0a0;
+      letter-spacing: 1.5px;
     }
 
-    footer {
-      text-align: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: #a37584;
-      margin-top: 10px;
-      letter-spacing: 2px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -185,59 +225,73 @@
 
   <div class="container">
     
-    <!-- Header Card -->
-    <div class="card">
-      <div class="date-tag">09.09 • ОСОБЕННЫЙ ДЕНЬ ❤️</div>
-      <h1>Эвелина ❤️</h1>
-      <p class="subtitle">С днём рождения, моя самая любимая, родная и невероятная девочка! Этот день полностью создан для тебя ✨</p>
+    <!-- Шапка -->
+    <div class="header-card">
+      <div class="badge">09.09 • ОСОБЕННЫЙ ДЕНЬ ❤️</div>
+      <div class="title">Эвелина <span style="color: #e63946;">❤️</span></div>
+      <div class="subtitle">
+        С днём рождения, моя самая любимая, родная и невероятная девочка! Этот день полностью создан для тебя ✨
+      </div>
     </div>
 
-    <!-- Main Interactive Letter -->
-    <div class="card">
-      <button class="btn-main" onclick="openLetter()">
-        Нажми сюда ❤️
-      </button>
+    <!-- Главная кнопка -->
+    <button class="btn-main" onclick="toggleLetter()">Нажми сюда ❤️</button>
+
+    <!-- Письмо -->
+    <div class="letter-card" id="letter">
+      <div class="letter-title">Моей любимой Эвелине... 🌸</div>
       
-      <div id="letter" class="letter-box">
-        <div class="letter-title">Моей любимой Эвелине... 🌸</div>
-        
-        <div class="letter-text">
-          <p>Моя дорогая, самая милая и прекрасная Эвелина! ❤️ Поздравляю тебя с твоим днём рождения! Я так рад, что ты есть в моей жизни, и хочу, чтобы сегодня ты чувствовала себя самой счастливой на всём свете.</p>
-          
-          <p>Ты даже не представляешь, насколько ты особенный и глубокий человек. В тебе есть всё: невероятная красота, ум, особенный стиль, доброта и та самая невероятная атмосфера, которую ты создаёшь вокруг себя просто своим присутствием. Когда ты рядом, всё вокруг становится теплее, уютнее и лучше 💖</p>
-          
-          <p>Я хочу пожелать тебе, чтобы каждый твой день был наполнен искренними улыбками, хорошими новостями и исполнением всех самых заветных желаний. Чтобы ты никогда не сомневалась в себе, уверенно шла к своим целям и знала, что у тебя обязательно всё получится! 🌹</p>
-          
-          <p>Пусть в твоей жизни будет как можно больше радостных моментов, путешествий, уюта и душевного спокойствия. Оставайся всегда такой же настоящей, яркой и неповторимой ✨</p>
-          
-          <p>Спасибо тебе за твои тёплые глаза, за твои слова, за твою заботу и за то, какая ты замечательная. Ты делаешь мой мир лучше каждый день!</p>
-        </div>
-        
-        <div class="final-love-block">
-          <div class="final-love-text">
-            Я ТЕБЯ ОЧЕНЬ СИЛЬНО ЛЮБЛЮ ЭВЕЛИНА ❤️
-          </div>
-        </div>
+      <div class="letter-text">
+        Моя дорогая, самая милая и прекрасная Эвелина! ❤️ Поздравляю тебя с твоим днём рождения! Я так рад, что ты есть в моей жизни, и хочу, чтобы сегодня ты чувствовала себя самой счастливой на всём свете.
+      </div>
+
+      <div class="letter-text">
+        Ты даже не представляешь, насколько ты особенный и глубокий человек. В тебе есть всё: невероятная красота, ум, особенный стиль, доброта и та самая невероятная атмосфера, которую ты создаёшь вокруг себя просто своим присутствием. Когда ты рядом, всё вокруг становится теплее, уютнее и лучше 💖
+      </div>
+
+      <div class="letter-text">
+        Я хочу пожелать тебе, чтобы каждый твой день был наполнен искренними улыбками, хорошими новостями и исполнением всех самых заветных желаний. Чтобы ты никогда не сомневалась в себе, уверенно шла к своим целям и знала, что у тебя обязательно всё получится! 🌹
+      </div>
+
+      <div class="letter-text">
+        Пусть в твоей жизни будет как можно больше радостных моментов, путешествий, уюта и душевного спокойствия. Оставайся всегда такой же настоящей, яркой и неповторимой ✨
+      </div>
+
+      <div class="letter-text">
+        Спасибо тебе за твои тёплые глаза, за твои слова, за твою заботу и за то, какая ты замечательная. Ты делаешь мой мир лучше каждый день!
+      </div>
+
+      <div class="love-banner">
+        Я ТЕБЯ ОЧЕНЬ СИЛЬНО ЛЮБЛЮ ЭВЕЛИНА ❤️
       </div>
     </div>
 
-    <!-- Cards Section -->
-    <div>
-      <div class="section-title">Карточки для тебя 🤍</div>
-      <div class="grid">
-        <div class="grid-item grid-card" onclick="clickCard(this)">🎬 Просмотр фильма</div>
-        <div class="grid-item grid-card" onclick="clickCard(this)">🥂 Романтический вечер</div>
-        <div class="grid-item grid-card" onclick="clickCard(this)">✨ Исполнение желания</div>
-        <div class="grid-item grid-card" onclick="clickCard(this)">💬 Душевный разговор</div>
+    <!-- Блок "Милые слова" -->
+    <div class="interactive-card">
+      <div class="interactive-title">Для тебя 💖</div>
+      <div class="interactive-sub">Нажимай, когда захочешь услышать что-то тёплое</div>
+      <div class="message-box" id="cute-text">
+        Нажми на кнопку ниже 👇
       </div>
+      <button class="btn-cute" onclick="showCuteMessage()">Получить послание ❤️</button>
     </div>
 
-    <footer>DESIGNED WITH LOVE FOR EVELINA</footer>
+    <!-- Карточки -->
+    <div class="section-title">Карточки для тебя 🤍</div>
+    <div class="grid">
+      <div class="grid-card">🎬 Просмотр фильма</div>
+      <div class="grid-card">🥂 Романтический вечер</div>
+      <div class="grid-card">✨ Исполнение желания</div>
+      <div class="grid-card">💬 Душевный разговор</div>
+    </div>
+
+    <!-- Подпись -->
+    <div class="footer">DESIGNED WITH LOVE FOR EVELINA</div>
 
   </div>
 
   <script>
-    function openLetter() {
+    function toggleLetter() {
       const letter = document.getElementById('letter');
       if (letter.style.display === 'block') {
         letter.style.display = 'none';
@@ -246,12 +300,23 @@
       }
     }
 
-    function clickCard(el) {
-      if (!el.classList.contains('active')) {
-        el.classList.add('active');
-        el.innerText = 'Принято ✓';
-      }
+    const cuteMessages = [
+      "Даже за сотни километров ты — самый близкий и родной мне человек. 🫂",
+      "В тебе есть редкая глубина, стиль и тепло, за которые я тебя так сильно люблю. ✨",
+      "Спасибо за каждый наш ночной разговор — с тобой время всегда летит незаметно. 💬",
+      "Когда тебе станет тяжело или одиноко, просто вспомни, что я верю в тебя безгранично. ❤️",
+      "Обожаю твой смех, твой голос и то, как ты умеешь делать всё вокруг лучше. 😊",
+      "Ты не просто моя любимая девочка, ты мой самый близкий человек и главное вдохновение. 🌸",
+      "Жду не дождусь момента, когда смогу обнять тебя не через экран, а вживую. 💖",
+      "Эвелина, ты — самое лучшее и теплое, что есть в моей жизни. С днём рождения! 🎉"
+    ];
+
+    function showCuteMessage() {
+      const textContainer = document.getElementById('cute-text');
+      const randomIndex = Math.floor(Math.random() * cuteMessages.length);
+      textContainer.innerText = cuteMessages[randomIndex];
     }
   </script>
+
 </body>
 </html>
